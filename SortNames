@@ -1,0 +1,20 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class SortNames {
+	
+	public static void main(String[] args) {
+		ArrayList<String> names = new ArrayList<String>();
+		names.add("xylum");
+		names.add("johny");
+		names.add("Akarsh");
+		names.add("Rohan");
+		names.add("Bhargav");
+		
+		
+		List<String> sortedNames = names.stream().sorted().collect(Collectors.toList());
+		System.out.println(sortedNames);
+	}
+
+}

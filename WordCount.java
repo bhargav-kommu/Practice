@@ -1,5 +1,6 @@
 import java.util.Scanner;
 
+// this programs is to find the number given word count in a sentance
 public class WordCount {
 	
 	public static void main(String[] args) {

@@ -1,0 +1,226 @@
+linux commands:
+===============
+
+pwd -> displays current working directory
+/ -> root directory
+echo -> command to write/print its argument on screen
+su -> switch to root user
+su username -> switch to specifies useer
+sudo -> do as super user, executes only that particular command as super user.
+
+clear -> clears the screen,old content is not deleted we can scroll up and see the old commands
+
+ls : to list all the files and folders
+ls -l -> lists all the files along with owner,permissions and timestamp(long format) 
+ls -a -> lists all files including hidden files
+ls -author -> lists contents of specified directory along with owner
+ls -S -> lists and sorts the files based on the size
+ls -*.xml -> lists all files with specified format
+
+
+cd : ->changes the directory to home directory
+cd ~ ->changes the directory to home directory
+cd / ->changes the directory to root directory
+cd .. ->changes teh directory to its parent directory
+cd 'folder name' -> if we have a space in folder name we need to specify in inverted commas.
+ 
+
+
+cat : to display the content of the file
+cat -b -> used to add line numbers to non blank lines
+cat -n ->used to add lines numbers to all lines
+cat -s -> used to squeez multiple blank lines into one blank line
+cat -E -> shows $ at the end of each line
+
+cat > file.txt -> creates a file content can be added from terminal.
+cat >> file.txt -> used to append the file content from terminal
+
+
+grep:
+
+grep options file1.txt Returns string for matching string options
+
+grep -i SearchString file1.txt returns the matching string for case insensitive
+
+grep -v searchString file1.txt displays the lines which are not matching given search string 
+
+grep -c SearchString file1.txt : dispays the number of lines with matcing given search string
+
+grep -n SearchString file1.txt : diaplays the matching lines along with the numerical order of  line number 
+
+ctrl + l : clears the screen
+
+
+sort file1.txt : diaplays all the line is the file in sorting order
+
+sort -r file1.txt : diaplay all thet lines of the file in reverse order
+
+
+grep searchString file1.txt | sort -r : search for matching lines and sort in reverse order
+
+cp: to copy files
+
+cp -i  interactive mode
+cp -n does not override the file               
+cp -u update only delta changes if files are same
+cp -v - verbose
+cp -R -Recurseively copy every sub file/folder
+
+
+mv : to move files
+
+mv -i interactive mode
+mv -u update only if source file is different form destination
+mv -v verbose
+
+
+mkdir : create new directories
+
+mkdir -p creates parent and sub direnctories
+mkdir --parents same as above
+mkdir -p dir1/{dir2,dir3,dir4} to create multiple sub directories in side a new directory
+
+
+rmdir : to delete directoreis
+
+rmdir -p removes both parent and child directories
+rmdir -pv removes both parent and child directores along with verbose
+rmdir -r removes even non empty directories
+rmdir -rp removes non empty directories including sub directories
+
+
+
+file permissions
+1	2user	3grup	4others
+d	rwx		rwx		r-x
+
+1 d - directory, c - character special file, b -binary file
+
+r -read
+w -write
+x -execute
+
+u-users
+g-group
+o-others
+a-all 
+
+chmod - to change access permissions of files and directories
+
+chown - to change the owner of files and directories
+
+chgrp - to change the group ownership of files and directories
+
+chmod g+wx filename  -> gives write and execute permission to group members
+
+chmod u=rwx,o-wx filename ->  gives read , write and execute for owners and removes write , execute ownership to others
+
+chmod 777 filename -> give read,write and execute permissions to all users
+
+chown username filename -> changes owner of specified file
+
+chown usernamae:groupname filename -> changes owner and group ownership of specified file
+
+chgrp groupname filename -> changes the group ownership of the specified file name
+
+
+
+Working with Linux Repositories
+===============================
+all the below commands are same -> 
+sudo yum install packagename -> for rhel based systems
+sudo apt-get install packagename -> for dabien based systems
+sudo dnf install packagename -> for fedora bases systems
+
+
+to install java
+===============
+sudo yum update -> updates the links to all the repositories
+sudo yum install java-1.8.0-openjdk
+update-alternatives --config java -> for selecting form various java versions
+
+sudo gedit .bashrc
+#set the environment variables here
+source.bashrc ->to sync the change in the current terminal.
+
+
+working with tar files
+======================
+gzip : to compress files with .gz format
+gunzip : to decompress files with .gz format
+tar : to compres and extract file with tar format
+
+
+tar cvf tarfilename.tar filename -> to comress a file
+tar xvf tarfile.tar -> to extract a tar file
+
+Environment Variables
+=====================
+printenv -> prints all environment vairalbes
+echo $HOME -> prints the path of the home directory of the user
+echo $PATH -> it is a colon-sperated list of directories in which the shell looks for the commands
+echo $HOSTNAME -> prints the hostname
+echo $USERNAME -> prints the user name
+echo $LANG -> prints the language being used by systems
+echo $BASH_VERSION -> prints the version of this instance of  bash
+
+
+Regular Expressions
+====================
+
+. relpaces any character
+^ matchtest the start of the string
+$ matches the end of the string
+* matches the preceding character 0 or more times
+() Groups the regular expressions
+\ represents special characters
+
+
+cat file1.txt | grep ^a -> cat output ie content is passed as input to grep which prints lines which starts with a
+
+grep 'a[0-9]x' file1.txt
+
+ls | grep '[xt$]'
+
+ls | grep 'le[0-9].txt'
+grep -n ['a*'] file1.txt
+grep ['d.d'] file1.txt 
+
+echo {a..z}
+echo {4..45}
+echo 1{a..z}9
+
+
+Precesses
+==========
+
+top : command displays all the process
+
+grep rH "string to search" .
+
+Users
+======
+
+sudo useradd user-name -> adding a new user
+sudo passwd user-name -> setting the password for that user
+sudo userdel user-name -> Deleting the user 
+
+sudo groupadd group-name -> adding a new group
+sudo groupdel group-name -> delete a group
+sudo usermod -g group-name user-name -> adding a user to primary group
+
+SSH to establish connection between 2 different locations/systems
+
+
+
+how to search for file in folder 
+
+find . -iname OrderAddSchedule.jsp
+
+. -> current directory 
+iname -> name of the file ignore case
+.jsp is the file we need to search
+
+
+how to search for a string using grep
+grep rH "string to search" .
